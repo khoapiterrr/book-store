@@ -1,0 +1,25 @@
+extends ../layouts/layout.pug
+include ../layouts/mixins/slide.pug
+block content
+  .jumbotron.jumbotron-fluid
+    .container
+      h1.display-4 Books
+  .container.text-right.p-2
+    a.btn.btn-primary(href=`/books/create`) thêm mới
+  .container
+    .row
+      each item in books
+        +productItem(item)
+        //- 
+        //-   .card.m-2(style='width: 18rem;')
+        //-     img.card-img-top(src='https://picsum.photos/80', alt=item.name)
+        //-     .card-body
+        //-       h5.card-title= item.name
+        //-       p.card-text= item.desc
+        //-       a.btn.btn-danger(href=`/books/delete/${item.id}`) Delete
+        //-       a.btn.btn-info(href=`/books/update/${item.id}`) Update
+    .text-center
+      +paginations
+block jsfooter 
+  script.
+    console.log(#{books})
