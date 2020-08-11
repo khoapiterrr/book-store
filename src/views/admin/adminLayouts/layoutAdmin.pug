@@ -1,0 +1,44 @@
+//- layout.pug
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    title Book Store
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='theme-color', content='#03a6f3')
+    link(rel='stylesheet', href='css/bootstrap.min.css')
+    link(href='https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800,900', rel='stylesheet')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+  body
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      a.navbar-brand(href='#')
+        //- img(src='/images/logo.png', width='30', height='30', alt='')
+        img(src='/images/logo.png', height='30', alt='')
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item.active
+            a.nav-link(href='/admin')
+              | Admin Home
+              span.sr-only (current)
+          li.nav-item
+            a.nav-link(href='/') Client Home
+          li.nav-item.dropdown
+            a#navbarDropdown.nav-link.dropdown-toggle(href='/admin/books', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+              | Books
+            .dropdown-menu(aria-labelledby='navbarDropdown')
+              a.dropdown-item(href='/admin/books') Danh sách
+              a.dropdown-item(href='/admin/books/create') Thêm sách
+              .dropdown-divider
+              a.dropdown-item(href='#') Something else here
+          li.nav-item
+            a.nav-link(href='#', tabindex='-1', aria-disabled='true') Users
+        form.form-inline.my-2.my-lg-0
+          input.form-control.mr-sm-2(type='search', placeholder='Search', aria-label='Search')
+          button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
+
+    block content
+
+    script(src='/js/jquery.min.js')
+    script(src='/js/bootstrap.min.js')

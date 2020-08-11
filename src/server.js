@@ -3,11 +3,13 @@ require('dotenv').config();
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
+const connectDB = require('./utils/db');
 const routes = require('./routes');
 
 const app = new express();
 const PORT = process.env.PORT || 3000;
-
+//connect to database
+connectDB();
 app.use(express.static(process.cwd() + '/public'));
 app.use(express.json());
 app.use(cookieParser('5e6321798aa9b35da5795325'));
