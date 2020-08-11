@@ -1,0 +1,6 @@
+extends ../layouts/layout.pug
+include ../layouts/mixins/about.pug
+include ../layouts/mixins/breadcrumb.pug
+block content
+  +breadcrumb('About')
+  +aboutPage

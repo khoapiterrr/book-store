@@ -1,0 +1,37 @@
+mixin header
+  header
+    .header-top
+      .container
+        .row
+          .col-md-3
+            a.web-url(href='#') www.bookstore.com
+          .col-md-6
+            h5 Free Shipping Over $99 + 3 Free Samples With Every Order
+          .col-md-3
+            span.ph-number Call : (+084) 393 837 623
+    .main-menu
+      .container
+        nav.navbar.navbar-expand-lg.navbar-light
+          a.navbar-brand(href='/')
+            img(src='/images/logo.png', alt='logo')
+          button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+          #navbarSupportedContent.collapse.navbar-collapse
+            ul.navbar-nav.ml-auto
+              li.navbar-item.active
+                a.nav-link(href='/') Home
+              li.navbar-item
+                a.nav-link(href='/shop.html') Shop
+              li.navbar-item
+                a.nav-link(href='/about.html') About
+              li.navbar-item
+                a.nav-link(href='/faq.html') FAQ
+              li.navbar-item
+                a.nav-link(href='/login.html') Login
+            .cart.my-2.my-lg-0
+              span
+                i.fa.fa-shopping-cart(aria-hidden='true')
+              span.quntity 3
+            form.form-inline.my-2.my-lg-0
+              input.form-control.mr-sm-2(type='search', placeholder='Search here...', aria-label='Search')
+              span.fa.fa-search
