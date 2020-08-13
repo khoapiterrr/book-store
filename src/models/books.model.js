@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const books = new mongoose.Schema({
+const booksSchema = new mongoose.Schema({
   name: {
     type: String,
     require: true,
@@ -30,7 +30,7 @@ const books = new mongoose.Schema({
     favs: Number,
   },
   createBy: {
-    userId: mongoose.Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Users',
   },
   createDate: {
@@ -72,3 +72,4 @@ const books = new mongoose.Schema({
     },
   ],
 });
+module.exports = Books = mongoose.model('Books', booksSchema);

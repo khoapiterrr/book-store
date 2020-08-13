@@ -1,8 +1,8 @@
-const mongodb = require('mongoose');
+const mongoose = require('mongoose');
 
 module.exports = async () => {
   try {
-    await mongodb.connect(process.env.dbURI, {
+    await mongoose.connect(process.env.dbLocalURI, {
       useUnifiedTopology: true,
       keepAlive: 1,
       useCreateIndex: true,
@@ -12,7 +12,7 @@ module.exports = async () => {
     });
 
     console.log('Mongodb connected...');
-    return mongodb.connection;
+    return mongoose.connection;
   } catch (err) {
     console.log(err.message);
     process.exit(1);

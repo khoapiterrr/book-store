@@ -1,4 +1,32 @@
 extends ../adminLayouts/layoutAdmin.pug
 
 block content
-  h1.text-center Quản lý các đầu sách
+  .jumbotron.jumbotron-fluid
+    .container
+      h1.text-center.display-4 Quản lý sách
+  
+  .container
+    .row
+      h3.col-md-6 Danh sách các sách
+      .col-md-6.text-right
+          a.btn.btn-primary(href="/admin/books/create") Thêm mới
+    table.table.w-100
+      thead
+        tr
+          th(scope='col') #
+          th(scope='col') Tên sách
+          th(scope='col') Giá
+          th(scope='col') Sale
+          th(scope='col') Active
+          th(scope='col') Xử lý
+
+      tbody
+        each item,index in books
+          tr
+            th(scope='row')= index
+            td=item.name
+            td=item.price
+            td=item.sale
+            td=item.hidden
+            td xoá sửa
+

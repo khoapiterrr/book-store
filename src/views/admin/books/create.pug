@@ -1,4 +1,46 @@
 extends ../adminLayouts/layoutAdmin.pug
 
 block content
-  h1.text-center Thêm mới sách
+  .jumbotron.jumbotron-fluid
+    .container
+      h1.text-center.display-4 Quản lý sách
+      
+  .container
+    .h3 Thêm mới các sách
+    form(action="/admin/books/create",id="formCreate", method="POST", enctype="multipart/form-data")
+      #summaryError
+        //- .alert.alert-danger(role='alert')
+        //-   | A simple danger alert—check it out!
+      .form-row
+        .form-group.col-md-6.col-xs-12
+          label(for='name') Tên sách
+          input#name.form-control(type='text',name='name', aria-describedby='emailHelp', placeholder='Nhập tên sách')
+        .form-group.col-md-6.col-xs-12
+          label(for='author') Tên tác giả
+          input#author.form-control(type='text',name='author', aria-describedby='emailHelp', placeholder='Nhập tên tác giả')
+      .form-group
+        label(for='price') Giá sản phẩm
+        input#price.form-control(type='number',name='price', aria-describedby='emailHelp', placeholder='Nhập giá sản phẩm')
+      
+      .form-group
+        label(for='description') Mô tả
+        textarea#description.form-control(rows='3' name='description',placeholder='Mô tả' )
+
+      .form-group.form-check.form-check-inline
+        input#sale.form-check-input(type='checkbox' name="sale")
+        label.form-check-label(for='sale') Sale?
+      .form-group.form-check.form-check-inline
+        input#hidden.form-check-input(type='checkbox' name="hidden")
+        label.form-check-label(for='hidden') Hidden?
+      .form-group
+        label(for='photos') Ảnh sản phẩm
+        input#photos.form-control-file(type='file',name="photos",multiple=true, accept="image/x-png,image/gif,image/jpeg")
+        #photos-privew.row.my-4
+          
+      .py-2
+        a(href="/admin/books")
+          button.btn.btn-danger.mr-2(type='button') Trở về
+        button.btn.btn-primary(type='button' onclick="submitForm()") Tạo mới
+block jsfooter 
+    script(src='/js/custom/books.js')
+

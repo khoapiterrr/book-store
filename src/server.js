@@ -8,6 +8,7 @@ const routes = require('./routes');
 
 const app = new express();
 const PORT = process.env.PORT || 3000;
+
 //connect to database
 connectDB();
 app.use(express.static(process.cwd() + '/public'));
