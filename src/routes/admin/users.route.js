@@ -20,10 +20,34 @@ router.get('/create', async (req, res) => {
 
 router.get('/update/:id', async (req, res, next) => {
   try {
-    const data = User.getById(req.params.id);
+    const data = await User.getById(req.params.id);
+    console.log(data, 'aâ');
     res.render('admin/users/update', {
       data: data,
     });
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.post('/update/:id', upload.single('avatar'), async (req, res, next) => {
+  try {
+    let url;
+    if (req.file) {
+      const { path } = req.file;
+      url = await uploader(path);
+      fs.unlinkSync(path);
+    }
+    req.body.isAdmin = req.body.isAdmin === 'on' ? true : false;
+    if (url) {
+      req.body.avatar = url.url;
+    }
+
+    //  = { ...data, ...req.body };
+    const data = await User.getById(req.params.id);
+    const update = Object.assign(data, req.body);
+    await update.save();
+    res.redirect('/admin/users');
   } catch (error) {
     next(error);
   }
@@ -53,3 +77,13 @@ router.post('/create', upload.single('avatar'), async (req, res, next) => {
 });
 
 module.exports = router;
+
+router.get('/delete/:id', async (req, res, next) => {
+  try {
+    const dtRemove = await User.getById(req.params.id);
+    await dtRemove.remove();
+    res.redirect('/admin/users');
+  } catch (error) {
+    next(error);
+  }
+});

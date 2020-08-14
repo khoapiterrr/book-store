@@ -37,7 +37,7 @@ usersSchema.pre('save', async function (next) {
     const checkEmail = await mongoose.models['users'].findOne({
       email: this.email,
     });
-    if (checkEmail) {
+    if (checkEmail && this.isNew) {
       next('Tài khoản email đã tồn tại trong hệ thống');
     }
     if (!this.isModified('password')) return next();
@@ -74,7 +74,7 @@ usersSchema.pre('update', async function (next) {
   }
 });
 
-usersSchema.static = {
+usersSchema.statics = {
   async getById(id) {
     try {
       let user;

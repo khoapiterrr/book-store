@@ -21,10 +21,18 @@ function submitForm() {
   ValidateRequireControl('#name', 'Phải nhập tên người dùng');
   ValidateRequireControl('#email', 'Phải nhập email');
   ValidateRequireControl('#password', 'Phải nhập tên người dùng');
-  debugger;
   if ($('#email').val()) {
     ValidateRequireControlEmail('#email', 'Phải nhập email đúng định dạng');
   }
+  if (FormModalIsValid) {
+    $('#formCreate').submit();
+  }
+}
+function submitUpdateForm() {
+  FormModalIsValid = true;
+  ValidateRequireControl('#name', 'Phải nhập tên người dùng');
+  ValidateRequireControl('#password', 'Phải nhập tên người dùng');
+
   if (FormModalIsValid) {
     $('#formCreate').submit();
   }

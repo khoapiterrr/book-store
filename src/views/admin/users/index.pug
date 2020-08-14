@@ -28,7 +28,7 @@ block content
             td=item.email
             td=item.phone
             td
-              a.btn.btn-danger.mr-2(href=`/admin/users/update/${item.id}`) 
+              a.btn.btn-danger.mr-2(href=`/admin/users/delete/${item.id}` onclick="return confirm('Bạn có muốn xoá người dùng này không?');") 
                 i.fas.fa-trash-alt
               a.btn.btn-info(href=`/admin/users/update/${item.id}`)
                 i.fas.fa-user-edit
