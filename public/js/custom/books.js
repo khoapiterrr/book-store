@@ -19,6 +19,7 @@ function readURL(input) {
   }
 }
 function submitForm() {
+  FormModalIsValid = true;
   ValidateRequireControl('#name', 'Phải nhập tên sách');
   ValidateRequireControl('#price', 'Phải nhập giá');
   ValidateRequireControl('#description', 'Phải nhập mô tả');

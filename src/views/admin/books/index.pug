@@ -28,5 +28,9 @@ block content
             td=item.price
             td=item.sale
             td=item.hidden
-            td xoá sửa
+            td
+              a.btn.btn-danger.mr-2(href=`/admin/users/update/${item.id}`) 
+                i.fas.fa-trash-alt
+              a.btn.btn-info(href=`/admin/users/update/${item.id}`)
+                i.fas.fa-user-edit
 

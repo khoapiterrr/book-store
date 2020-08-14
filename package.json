@@ -5,7 +5,7 @@
   "main": "src/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --delay 2500ms --ignore ./db.json ./src/server.js"
+    "start": "nodemon --inspect --delay 2500ms  ./src/server.js"
   },
   "author": "khoapiterrr",
   "license": "ISC",

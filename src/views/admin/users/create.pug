@@ -1,0 +1,43 @@
+extends ../adminLayouts/layoutAdmin.pug
+
+block content
+  .jumbotron.jumbotron-fluid
+    .container
+      h1.text-center.display-4 Quản lý người dùng
+      
+  .container
+    .h3 Thêm mới các người dùng
+    form(action="/admin/users/create",id="formCreate", method="POST", enctype="multipart/form-data")
+      #summaryError
+        //- .alert.alert-danger(role='alert')
+        //-   | A simple danger alert—check it out!
+      .form-row
+        .form-group.col-md-6.col-xs-12
+          label(for='name') Tên người dùng
+          input#name.form-control(type='text',name='name', aria-describedby='emailHelp', placeholder='Nhập tên người dùng')
+        .form-group.col-md-6.col-xs-12
+          label(for='email') Email
+          input#email.form-control(type='email',name='email', aria-describedby='emailHelp', placeholder='Nhập email')
+      .form-group
+        label(for='phone') Số điện thoại
+        input#phone.form-control(type='number',name='phone', aria-describedby='emailHelp', placeholder='Nhập số điện thoại')
+      .form-group
+        label(for='password') Mật khẩu
+        input#password.form-control(type='password',name='password', aria-describedby='emailHelp', placeholder='Nhập password')
+
+      .form-group.form-check.form-check-inline
+        input#isAdmin.form-check-input(type='checkbox' name="isAdmin")
+        label.form-check-label(for='isAdmin') Administrator?
+      
+      .form-group
+        label(for='photos') Avatar
+        input#photos.form-control-file(type='file',name="avatar" ,accept="image/x-png,image/gif,image/jpeg")
+        #photos-privew.row.my-4
+          
+      .py-2
+        a(href="/admin/users")
+          button.btn.btn-danger.mr-2(type='button') Trở về
+        button.btn.btn-primary(type='button' onclick="submitForm()") Tạo mới
+block jsfooter 
+    script(src='/js/custom/users.js')
+
